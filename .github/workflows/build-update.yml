@@ -1,1 +1,43 @@
+name: Build RSAT Dashboard Update
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - 'RSATDashboard.ps1'
+      - 'RSATDashboard.xaml'
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout repo
+      uses: actions/checkout@v3
+
+    - name: Setup PowerShell
+      uses: PowerShell/actions/setup-powershell@v1
+
+    - name: Increment version.txt
+      shell: pwsh
+      run: |
+        $version = Get-Content version.txt
+        $parts = $version.Split('.')
+        $parts[2] = [int]$parts[2] + 1
+        "$($parts[0]).$($parts[1]).$($parts[2])" | Out-File version.txt
+
+    - name: Create update.zip
+      shell: pwsh
+      run: |
+        Compress-Archive -Path RSATDashboard.ps1, RSATDashboard.xaml, rsat_ad_icon_multi.ico -DestinationPath update.zip -Force
+
+    - name: Commit and Push
+      run: |
+        git config user.name "github-actions"
+        git config user.email "actions@github.com"
+        git add update.zip version.txt
+        git commit -m "Automated update package"
+        git push
 
