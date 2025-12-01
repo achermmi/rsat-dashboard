@@ -3,59 +3,35 @@
 Windows RSAT administration dashboard with auto-update, Azure-styled UI, and WPF interface.
 
 ✨ Features
-
-Modern Azure UI
-
-WPF engine
-
-RSAT tool launcher
-
-AD search (Live LDAP query)
-
-RunAs with DPAPI-encrypted credentials
-
-Auto-Update system (GitHub versioning)
-
-Azure “Card” layout (dashboard style)
-
-Sidebar compact navigation
-
-Error logging & safe fallback
-
+    - Modern Azure UI
+    - WPF engine
+    - RSAT tool launcher
+    - AD search (Live LDAP query)
+    - RunAs with DPAPI-encrypted credentials
+    - Auto-Update system (GitHub versioning)
+    - Azure “Card” layout (dashboard style)
+    S- idebar compact navigation
+    - Error logging & safe fallback
+    
 📦 Included Tools
-
-Active Directory Users & Computers
-
-AD Sites & Services
-
-AD Domains & Trusts
-
-GPMC
-
-DNS Manager
-
-DHCP Manager
-
-Failover Cluster Manager
-
-Certificate Authority
-
-Volume Activation
-
-Server Manager
+    - Active Directory Users & Computers
+    - AD Sites & Services
+    - AD Domains & Trusts
+    - GPMC
+    - DNS Manager
+    - DHCP Manager
+    -Failover Cluster Manager
+    - Certificate Authority
+    - Volume Activation
+    - Server Manager
 
 🔄 Auto-Update System
-
-The dashboard checks:
-
-version.txt
-update.zip
-
-
-from GitHub using raw URLs:
-
-https://raw.githubusercontent.com/<username>/rsat-dashboard/main/version.txt
-https://raw.githubusercontent.com/<username>/rsat-dashboard/main/update.zip
+    - The dashboard checks:
+        1. version.txt
+        2. update.zip
+    - from GitHub using raw URLs:
+        https://raw.githubusercontent.com/achermmi/rsat-dashboard/main/version.txt
+        https://raw.githubusercontent.com/achermmi/rsat-dashboard/main/update.zip
 
 
 If the version is newer, it automatically:
@@ -67,8 +43,7 @@ If the version is newer, it automatically:
 🛠 How to Build Updates
 
 Run:
-
-BuildUpdate.ps1 -push
+- BuildUpdate.ps1 -push
 
 
 This will:
@@ -86,12 +61,9 @@ C:\RSATDashboard\
 
 ⚙ Requirements
 
-Windows 10/11
-
-RSAT Installed
-
-PowerShell 5.1+
+- Windows 10/11
+- RSAT Installed
+- PowerShell 5.1+
 
 📝 License
-
-MIT License (optional)
+Free
