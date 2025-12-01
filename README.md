@@ -3,42 +3,50 @@
 Windows RSAT administration dashboard with auto-update, Azure-styled UI, and WPF interface.
 
 ✨ Features
-    - Modern Azure UI
-    - WPF engine
-    - RSAT tool launcher
-    - AD search (Live LDAP query)
-    - RunAs with DPAPI-encrypted credentials
-    - Auto-Update system (GitHub versioning)
-    - Azure “Card” layout (dashboard style)
-    S- idebar compact navigation
-    - Error logging & safe fallback
+
+- Modern Azure UI
+- WPF engine
+- RSAT tool launcher
+- AD search (Live LDAP query)
+- RunAs with DPAPI-encrypted credentials
+- Auto-Update system (GitHub versioning)
+- Azure “Card” layout (dashboard style)
+- Sidebar compact navigation
+- Error logging & safe fallback
+
     
 📦 Included Tools
-    - Active Directory Users & Computers
-    - AD Sites & Services
-    - AD Domains & Trusts
-    - GPMC
-    - DNS Manager
-    - DHCP Manager
-    -Failover Cluster Manager
-    - Certificate Authority
-    - Volume Activation
-    - Server Manager
+- Active Directory Users & Computers
+- AD Sites & Services
+- AD Domains & Trusts
+- GPMC
+- DNS Manager
+- DHCP Manager
+- Failover Cluster Manager
+- Certificate Authority
+- Volume Activation
+- Server Manager
+
 
 🔄 Auto-Update System
-    - The dashboard checks:
-        1. version.txt
-        2. update.zip
-    - from GitHub using raw URLs:
-        https://raw.githubusercontent.com/achermmi/rsat-dashboard/main/version.txt
-        https://raw.githubusercontent.com/achermmi/rsat-dashboard/main/update.zip
+- The dashboard checks:
+  - version.txt
+  - update.zip
+- from GitHub using raw URLs:
+  
+  https://raw.githubusercontent.com/achermmi/rsat-dashboard/main/version.txt
+
+  https://raw.githubusercontent.com/achermmi/rsat-dashboard/main/update.zip
 
 
 If the version is newer, it automatically:
 
 ✔ downloads update.zip
+
 ✔ extracts it into C:\RSATDashboard
+
 ✔ relaunches the dashboard
+
 
 🛠 How to Build Updates
 
@@ -49,8 +57,11 @@ Run:
 This will:
 
 ✔ auto-increment version
+
 ✔ create update.zip
+
 ✔ commit & push to GitHub (if git is configured)
+
 
 📂 Folder Structure
 C:\RSATDashboard\
@@ -59,11 +70,11 @@ C:\RSATDashboard\
     rsat_ad_icon_multi.ico
     logs\
 
+
 ⚙ Requirements
 
 - Windows 10/11
 - RSAT Installed
 - PowerShell 5.1+
 
-📝 License
-Free
+📝 License: Free
