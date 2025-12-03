@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Product
+    Id="*"
+    Name="RSAT Dashboard"
+    Language="1033"
+    Version="1.0.0"
+    Manufacturer="achermmi"
+    UpgradeCode="A3B32F47-71E0-4D59-B613-11BC4F7D9032">
+
+    <Package InstallerVersion="500" Compressed="yes" InstallScope="perMachine" />
+
+    <MediaTemplate />
+
+    <Feature Id="MainFeature" Title="RSAT Dashboard" Level="1">
+      <ComponentGroupRef Id="RSATDashboardFiles"/>
+    </Feature>
+
+    <!-- Directory structure -->
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="ProgramFilesFolder">
+        <Directory Id="INSTALLFOLDER" Name="RSATDashboard"/>
+      </Directory>
+
+      <!-- Start Menu folder -->
+      <Directory Id="ProgramMenuFolder">
+        <Directory Id="ApplicationProgramsFolder" Name="RSAT Dashboard"/>
+      </Directory>
+
+      <!-- Desktop -->
+      <Directory Id="DesktopFolder"/>
+    </Directory>
+
+    <DirectoryRef Id="INSTALLFOLDER">
+      <Component Id="RSATDashboardFiles" Guid="*">
+        <File Source="RSATDashboard.ps1" />
+        <File Source="RSATDashboard.xaml" />
+        <File Source="rsat_ad_icon_multi.ico" />
+        <File Source="Installer.ps1" />
+
+        <!-- Views folder -->
+        <Directory Id="ViewsDir" Name="Views">
+          <Component Id="ViewsFiles" Guid="*">
+            <File Source="Views\Main.xaml" />
+            <File Source="Views\AdminRun.xaml" />
+          </Component>
+        </Directory>
+      </Component>
+    </DirectoryRef>
+
+    <!-- Desktop Shortcut -->
+    <DirectoryRef Id="DesktopFolder">
+      <Component Id="DesktopShortcut" Guid="*">
+        <Shortcut
+          Id="DesktopShortcutID"
+          Name="RSAT Dashboard"
+          Target="powershell.exe"
+          Arguments="-ExecutionPolicy Bypass -File &quot;C:\RSATDashboard\RSATDashboard.ps1&quot;"
+          Icon="MainIcon" />
+        <RegistryValue Root="HKCU" Key="Software\RSATDashboard" Name="installed" Type="integer" Value="1" KeyPath="yes"/>
+      </Component>
+    </DirectoryRef>
+
+    <!-- Start Menu Shortcut -->
+    <DirectoryRef Id="ApplicationProgramsFolder">
+      <Component Id="StartMenuShortcut" Guid="*">
+        <Shortcut
+          Id="StartMenuShortcutID"
+          Name="RSAT Dashboard"
+          Target="powershell.exe"
+          Arguments="-ExecutionPolicy Bypass -File &quot;C:\RSATDashboard\RSATDashboard.ps1&quot;"
+          Icon="MainIcon" />
+        <RegistryValue Root="HKCU" Key="Software\RSATDashboard" Name="installed2" Type="integer" Value="1" KeyPath="yes"/>
+      </Component>
+    </DirectoryRef>
+
+    <Icon Id="MainIcon" SourceFile="rsat_ad_icon_multi.ico"/>
+    
+  </Product>
+
+  <!-- Component groups -->
+  <Fragment>
+    <ComponentGroup Id="RSATDashboardFiles" Directory="INSTALLFOLDER">
+      <ComponentRef Id="RSATDashboardFiles"/>
+      <ComponentRef Id="DesktopShortcut"/>
+      <ComponentRef Id="StartMenuShortcut"/>
+    </ComponentGroup>
+  </Fragment>
+</Wix>
