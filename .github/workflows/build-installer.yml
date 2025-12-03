@@ -8,20 +8,29 @@ jobs:
     runs-on: windows-latest
 
     steps:
-    - name: Checkout repository
+    - name: Checkout repo
       uses: actions/checkout@v3
 
     - name: Install NSIS
-      run: choco install nsis -y
+      shell: pwsh
+      run: |
+        choco install nsis -y
+        $nsis = "C:\Program Files (x86)\NSIS"
+        echo "NSIS path: $nsis"
+        echo "$nsis" >> $env:GITHUB_PATH
+
+    - name: Verify makensis path
+      shell: pwsh
+      run: |
+        Get-Command makensis.exe -ErrorAction Continue
 
     - name: Build Installer
-      run: makensis installer/installer.nsi
+      shell: pwsh
+      run: |
+        makensis.exe /V4 installer/installer.nsi
 
-    - name: Upload installer to GitHub Release
-      uses: ncipollo/release-action@v1
+    - name: Upload installer
+      uses: actions/upload-artifact@v4
       with:
-        tag: "v${{ github.run_number }}"
-        name: "RSAT Dashboard Installer"
-        body: "Setup.exe generato automaticamente"
-        artifacts: "RSATDashboard_Setup.exe"
-        token: ${{ secrets.GITHUB_TOKEN }}
+        name: RSATDashboardInstaller
+        path: installer/RSATDashboard_Setup.exe
