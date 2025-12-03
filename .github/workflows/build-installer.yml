@@ -1,0 +1,27 @@
+name: Build Installer EXE
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build-installer:
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Install NSIS
+      run: choco install nsis -y
+
+    - name: Build Installer
+      run: makensis installer/installer.nsi
+
+    - name: Upload installer to GitHub Release
+      uses: ncipollo/release-action@v1
+      with:
+        tag: "v${{ github.run_number }}"
+        name: "RSAT Dashboard Installer"
+        body: "Setup.exe generato automaticamente"
+        artifacts: "RSATDashboard_Setup.exe"
+        token: ${{ secrets.GITHUB_TOKEN }}
