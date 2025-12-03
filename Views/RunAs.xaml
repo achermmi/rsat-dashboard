@@ -1,0 +1,31 @@
+<Grid xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+
+    <StackPanel Margin="20" Width="400">
+
+        <TextBlock Text="RunAs Domain Admin"
+                   Style="{StaticResource HeaderText}"/>
+
+        <TextBlock Text="Dominio\Username" Foreground="#E2E8F0"/>
+        <TextBox x:Name="TBUser" Margin="0,5,0,15"
+                 Background="#1E293B"
+                 Foreground="#E2E8F0"/>
+
+        <TextBlock Text="Password" Foreground="#E2E8F0"/>
+        <PasswordBox x:Name="TBPass" Margin="0,5,0,15"
+                     Background="#1E293B"
+                     Foreground="#E2E8F0"/>
+
+        <Button x:Name="BtnSaveCreds"
+                Style="{StaticResource AzureCard}"
+                Margin="0,20,0,10">
+            Salva Credenziali
+        </Button>
+
+        <Button x:Name="BtnRunTest"
+                Style="{StaticResource AzureCard}">
+            Test Credenziali (Apre ADUC)
+        </Button>
+
+    </StackPanel>
+
+</Grid>

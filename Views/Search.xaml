@@ -1,0 +1,20 @@
+<Grid xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+
+    <StackPanel Margin="20" Width="400">
+
+        <TextBlock Text="Search User in Active Directory"
+                   Style="{StaticResource HeaderText}"/>
+
+        <TextBlock Text="Nome utente" Foreground="#E2E8F0"/>
+        <TextBox x:Name="TBQuery" Margin="0,5,0,15"
+                 Background="#1E293B"
+                 Foreground="#E2E8F0"/>
+
+        <Button x:Name="BtnSearchUser"
+                Style="{StaticResource AzureCard}">
+            Cerca Utente
+        </Button>
+
+    </StackPanel>
+
+</Grid>

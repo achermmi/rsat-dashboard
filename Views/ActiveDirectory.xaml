@@ -1,0 +1,34 @@
+<Grid xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+
+    <StackPanel Margin="20">
+
+        <TextBlock Text="Active Directory Tools"
+                   Style="{StaticResource HeaderText}"/>
+
+        <UniformGrid Columns="2">
+
+            <Button Style="{StaticResource AzureCard}"
+                    Tag="ADUC">
+                AD Users and Computers
+            </Button>
+
+            <Button Style="{StaticResource AzureCard}"
+                    Tag="ADSites">
+                AD Sites and Services
+            </Button>
+
+            <Button Style="{StaticResource AzureCard}"
+                    Tag="ADDomains">
+                AD Domains & Trusts
+            </Button>
+
+            <Button Style="{StaticResource AzureCard}"
+                    Tag="GPMC">
+                Group Policy Management
+            </Button>
+
+        </UniformGrid>
+
+    </StackPanel>
+
+</Grid>

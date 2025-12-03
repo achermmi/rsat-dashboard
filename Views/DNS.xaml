@@ -1,0 +1,29 @@
+<Grid xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+
+    <StackPanel Margin="20">
+
+        <TextBlock Text="DNS / DHCP Tools"
+                   Style="{StaticResource HeaderText}"/>
+
+        <UniformGrid Columns="2">
+
+            <Button Style="{StaticResource AzureCard}"
+                    Tag="DNS">
+                DNS Manager
+            </Button>
+
+            <Button Style="{StaticResource AzureCard}"
+                    Tag="DHCP">
+                DHCP Manager
+            </Button>
+
+            <Button Style="{StaticResource AzureCard}"
+                    Tag="ServerMgr">
+                Server Manager
+            </Button>
+
+        </UniformGrid>
+
+    </StackPanel>
+
+</Grid>

@@ -1,1 +1,38 @@
+<Grid xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
 
+    <StackPanel Margin="20">
+
+        <TextBlock Text="RSAT Dashboard"
+                   Style="{StaticResource HeaderText}"/>
+
+        <UniformGrid Columns="2" Margin="0,10,0,0">
+
+            <Button Style="{StaticResource AzureCard}">
+                Active Directory Users & Computers
+            </Button>
+
+            <Button Style="{StaticResource AzureCard}">
+                DNS Manager
+            </Button>
+
+            <Button Style="{StaticResource AzureCard}">
+                DHCP Manager
+            </Button>
+
+            <Button Style="{StaticResource AzureCard}">
+                Group Policy Management
+            </Button>
+
+            <Button Style="{StaticResource AzureCard}">
+                AD Sites & Services
+            </Button>
+
+            <Button Style="{StaticResource AzureCard}">
+                Domains & Trusts
+            </Button>
+
+        </UniformGrid>
+
+    </StackPanel>
+
+</Grid>
