@@ -1,0 +1,29 @@
+name: Build MSI Installer
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build-msi:
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Install WiX Toolset
+      run: choco install wix --version=3.11.2 -y
+
+    - name: Build MSI
+      run: |
+        candle installer\Product.wxs -o installer\Product.wixobj
+        light installer\Product.wixobj -o RSATDashboard.msi
+
+    - name: Upload MSI to release
+      uses: ncipollo/release-action@v1
+      with:
+        tag: "msi-${{ github.run_number }}"
+        name: "RSAT Dashboard MSI"
+        body: "MSI installer auto-generated"
+        artifacts: "RSATDashboard.msi"
+        token: ${{ secrets.GITHUB_TOKEN }}
